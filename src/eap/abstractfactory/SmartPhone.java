@@ -55,7 +55,7 @@ public class SmartPhone extends Phone {
     }
 
    
-    // Επεκτείνει την toSting της κληρονομηθείσα κλάσης
+    // Επεκτείνει την toSting της κληρονομηθείσας κλάσης
     @Override
     public String toString() {
         return super.toString() + "\n"
