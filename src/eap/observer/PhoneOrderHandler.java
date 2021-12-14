@@ -10,13 +10,17 @@ import java.util.List;
 public class PhoneOrderHandler {
     private static final List<PhoneCreationListener> phoneCreationListeners = new ArrayList<>();
     private static final List<Phone> phoneList = new ArrayList<>();
+    
     public static void addPhone(Phone phone){
         phoneList.add(phone);
     }
+    
     public static void removePhone(Phone phone){
         phoneList.remove(phone);
     }
+    
     public static boolean phoneExistsInList(Phone phone){return phoneList.contains(phone);}
+    
     public static void buildPhones(){
         System.out.println("\n##########-Phone Build Process Started-##########");
         List<Phone> phones = new ArrayList<>(phoneList);//Make a copy of the phones that should be created
@@ -42,17 +46,21 @@ public class PhoneOrderHandler {
         System.out.println("\n########-Phone Specs saved to output.txt-########");
         System.out.println("###########-Phone Build Process Ended-###########");
     }
+    
     //Η μέθοδος αυτή θα εκτυπώνει τα βασικά χαρακτηριστικά, μόνο από την κλάση Phone του κινητού τηλεφώνου
     //όσων κινητών παράχθηκαν
     private static void printCreatedPhoneSpecsToTextFile(List<Phone> phones){
 
     }
+    
     public static void addListener(PhoneCreationListener phoneCreationListener){
         phoneCreationListeners.add(phoneCreationListener);
     }
+    
     public static void removeListener(PhoneCreationListener phoneCreationListener){
         phoneCreationListeners.remove(phoneCreationListener);
     }
+    
     private static void notifyListeners(Phone phone){
         List<PhoneCreationListener> tempPhoneCreationListeners = new ArrayList<>(phoneCreationListeners);
         for(PhoneCreationListener listener : tempPhoneCreationListeners){

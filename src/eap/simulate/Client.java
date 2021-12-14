@@ -45,23 +45,34 @@ public class Client implements PhoneCreationListener {
 
     @Override
     public void update(Phone phone) {
-
+        // Αφαιρεί το τηλέφωνο από το σύνολο των διαθέσιμων τηλεφώνων
+        // Απεγράφεται από την λίστα των ενδιαφερόμενων πελατών
+        // Αφαιρείται από το σύνολο των πελατών που αναμένουν για κινητό
+        // Print "Hi, I am Eleni (featurePhone) and I got my new phone!"
+        // Print phone specs
+        // checkNumberValidity
+        // getCarrierName
+        // usePhone
     }
+    
     /*Η μέθοδος χρήσης του κινητού τηλεφώνου θα κάνει τα εξής:
     Στην περίπτωση FeaturePhone θα καλεί τον αριθμό +30123456789
     Στην περίπτωση SmartPhone Θα βγάζει μια φωτογραφία με φλας και ανάλυση 12 MP*/
-    private void usePhone(Phone pHone){
-
+    private void usePhone(Phone phone){
+        // phone.callNumber
+        // phone.camera.takePicture
     }
+    
     //Σύμφωνα με την περιγραφή πάνω από τον πίνακα carriers, η μέθοδος επιστρέφει είτε το όνομα του carrier, είτε Διαφημιστικά
     public String getCarrierName(String phoneNumber){
-
+        // 'Ελεγχος carrier με βάση τα 3 πρώτα νούμερα του αριθμού
     }
+    
     /*Για να είναι έγκυρο ένα κινητό τηλέφωνο πρέπει να ισχύουν ταυτόχρονα τα εξής:
     1. Να ξεκινάει από +3069 (είναι όλα από Ελλάδα και είναι όλα κινητά)
     2. Στη συνέχεια να υπάρχουν ακριβώς 10 αριθμοί
     3. Παραδοχή ότι δεν υπάρχουν κενά (white spaces μεταξύ των αριθμών)*/
     public boolean checkNumberValidity(String phoneNumber){
-
+        // Χρήση regex
     }
 }
