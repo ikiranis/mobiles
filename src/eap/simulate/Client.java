@@ -64,8 +64,26 @@ public class Client implements PhoneCreationListener {
     }
     
     //Σύμφωνα με την περιγραφή πάνω από τον πίνακα carriers, η μέθοδος επιστρέφει είτε το όνομα του carrier, είτε Διαφημιστικά
-    public String getCarrierName(String phoneNumber){
-        // 'Ελεγχος carrier με βάση τα 3 πρώτα νούμερα του αριθμού
+    public static String getCarrierName(String phoneNumber){
+        
+        if (phoneNumber.matches(".*30697.*|.*30698.*|.*30699.*")) {
+            return carriers[0];
+        }
+
+       
+        if (phoneNumber.matches(".*30694.*|.*30695.*|.*30696.*")) {
+            return carriers[1];
+        }
+        
+        if (phoneNumber.matches(".*30691.*|.*30692.*|.*30693.*")) {
+            return carriers[2];
+        }
+        
+        if (phoneNumber.matches(".*30690.*")) {
+            return "Διαφημιστικά";
+        }
+       
+        return "Άγνωστο";
     }
     
     /*Για να είναι έγκυρο ένα κινητό τηλέφωνο πρέπει να ισχύουν ταυτόχρονα τα εξής:
@@ -74,19 +92,18 @@ public class Client implements PhoneCreationListener {
     3. Παραδοχή ότι δεν υπάρχουν κενά (white spaces μεταξύ των αριθμών)*/
     public static boolean checkNumberValidity(String phoneNumber){
         // Χρήση των κλάσεων Pattern και Matcher για τον έλεγχο του αριθμού
+        
         // Δημιουργούμε ένα pattern instance, χρησιμοποιώντας την μέθοδο compile
         // Ψάχνουμε για το pattern, o αριθμός να αρχίζει με +3069 και να ακολουθούν
         // 8 αριθμητικά ψηφία
         Pattern pattern = Pattern.compile("^\\+3069\\d{8}$");
+        
         // Δημιουργούμε ένα matcher instance, για να ελέγξουμε με την μέθοδο 
         // matcher, το string phoneNumber, αν συμφωνεί με το pattern που έχουμε ορίσει
         Matcher matcher = pattern.matcher(phoneNumber);
         
-        // Έλεγχος αν συμφωνεί τo string με το pattern
-        if (matcher.find()) {
-            return true;
-        }
-        
-        return false;
+        // Έλεγχος αν συμφωνεί τo string με το pattern κι επιστρέφει true ή false
+        return matcher.find();
+       
     }
 }
