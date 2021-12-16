@@ -65,25 +65,27 @@ public class Client implements PhoneCreationListener {
     
     //Σύμφωνα με την περιγραφή πάνω από τον πίνακα carriers, η μέθοδος επιστρέφει είτε το όνομα του carrier, είτε Διαφημιστικά
     public static String getCarrierName(String phoneNumber){
+        // Χρήση της μεθόδου matches για έλεγχο αν περιέχεται συγκεκριμένο string-αριθμός
+        // και ανάλογα επιστρέφει τον carrier
         
+        // Για Cosmote
         if (phoneNumber.matches(".*30697.*|.*30698.*|.*30699.*")) {
             return carriers[0];
         }
-
        
+        // Για Vodafone
         if (phoneNumber.matches(".*30694.*|.*30695.*|.*30696.*")) {
             return carriers[1];
         }
         
+        // Για Wind
         if (phoneNumber.matches(".*30691.*|.*30692.*|.*30693.*")) {
             return carriers[2];
         }
         
-        if (phoneNumber.matches(".*30690.*")) {
-            return "Διαφημιστικά";
-        }
-       
-        return "Άγνωστο";
+        // Για Διαφημιστικά, αν δεν βρει τίποτα από τα παραπάνω
+        return "Διαφημιστικά";
+
     }
     
     /*Για να είναι έγκυρο ένα κινητό τηλέφωνο πρέπει να ισχύουν ταυτόχρονα τα εξής:
@@ -104,6 +106,6 @@ public class Client implements PhoneCreationListener {
         
         // Έλεγχος αν συμφωνεί τo string με το pattern κι επιστρέφει true ή false
         return matcher.find();
-       
+      
     }
 }

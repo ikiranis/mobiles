@@ -20,8 +20,8 @@ public class Simulation {
     // και θα αναμείνουν για την ενδεχόμενη παραγωγή των τηλεφώνων που τους ενδιαφέρουν
     public static void main(String[] args) {
         
-        System.out.println(Client.checkNumberValidity("+316977205229"));
-        System.out.println(Client.getCarrierName("+306977205229"));
+        System.out.println(Client.checkNumberValidity("+306977205229"));
+        System.out.println(Client.getCarrierName("+306997205229"));
     }
 
 }
