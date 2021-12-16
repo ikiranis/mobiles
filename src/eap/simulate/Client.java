@@ -72,7 +72,21 @@ public class Client implements PhoneCreationListener {
     1. Να ξεκινάει από +3069 (είναι όλα από Ελλάδα και είναι όλα κινητά)
     2. Στη συνέχεια να υπάρχουν ακριβώς 10 αριθμοί
     3. Παραδοχή ότι δεν υπάρχουν κενά (white spaces μεταξύ των αριθμών)*/
-    public boolean checkNumberValidity(String phoneNumber){
-        // Χρήση regex
+    public static boolean checkNumberValidity(String phoneNumber){
+        // Χρήση των κλάσεων Pattern και Matcher για τον έλεγχο του αριθμού
+        // Δημιουργούμε ένα pattern instance, χρησιμοποιώντας την μέθοδο compile
+        // Ψάχνουμε για το pattern, o αριθμός να αρχίζει με +3069 και να ακολουθούν
+        // 8 αριθμητικά ψηφία
+        Pattern pattern = Pattern.compile("^\\+3069\\d{8}$");
+        // Δημιουργούμε ένα matcher instance, για να ελέγξουμε με την μέθοδο 
+        // matcher, το string phoneNumber, αν συμφωνεί με το pattern που έχουμε ορίσει
+        Matcher matcher = pattern.matcher(phoneNumber);
+        
+        // Έλεγχος αν συμφωνεί τo string με το pattern
+        if (matcher.find()) {
+            return true;
+        }
+        
+        return false;
     }
 }
