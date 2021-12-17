@@ -64,7 +64,7 @@ public class Client implements PhoneCreationListener {
     }
     
     //Σύμφωνα με την περιγραφή πάνω από τον πίνακα carriers, η μέθοδος επιστρέφει είτε το όνομα του carrier, είτε Διαφημιστικά
-    public static String getCarrierName(String phoneNumber){
+    public String getCarrierName(String phoneNumber){
         // Χρήση της μεθόδου matches για έλεγχο αν περιέχεται συγκεκριμένο string-αριθμός
         // και ανάλογα επιστρέφει τον carrier
         
@@ -92,7 +92,7 @@ public class Client implements PhoneCreationListener {
     1. Να ξεκινάει από +3069 (είναι όλα από Ελλάδα και είναι όλα κινητά)
     2. Στη συνέχεια να υπάρχουν ακριβώς 10 αριθμοί
     3. Παραδοχή ότι δεν υπάρχουν κενά (white spaces μεταξύ των αριθμών)*/
-    public static boolean checkNumberValidity(String phoneNumber){
+    public boolean checkNumberValidity(String phoneNumber){
         // Χρήση των κλάσεων Pattern και Matcher για τον έλεγχο του αριθμού
         
         // Δημιουργούμε ένα pattern instance, χρησιμοποιώντας την μέθοδο compile
