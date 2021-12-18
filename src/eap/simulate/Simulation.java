@@ -20,9 +20,9 @@ public class Simulation {
     // και θα αναμείνουν για την ενδεχόμενη παραγωγή των τηλεφώνων που τους ενδιαφέρουν
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+        Random random = new Random();
         int numberOfPhones;
         int numberOfClients;
-        Phone phone;
                 
         // Εισαγωγή δεδομένων από τον χρήστη
         System.out.print("Please enter number of phones to be ordered: ");
@@ -36,11 +36,19 @@ public class Simulation {
         System.out.printf("%d phone orders have been placed by the PhoneShop!\n", numberOfPhones);
         System.out.printf("%d clients are waiting to buy a new phone!\n", numberOfClients);
         
+        // Δημιουργία των πελατών
+        for (int i=0; i<numberOfClients; i++) {
+            // Θέτουμε τυχαία αν το interestFor είναι κλάσης FeaturePhone ή SmartPhone
+            Class interestFor = random.nextBoolean() ? FeaturePhone.class : SmartPhone.class;
+            
+            Client client = new Client(names[random.nextInt(10)], interestFor);
+        }
+        
         // Δημιουργία των τηλεφώνων
         PhoneShop phoneShop = new PhoneShop();
                 
         for(int i=0; i<numberOfPhones; i++) {
-            // Το phoneShop δημιουργεί τα specs και τα παιρνάει στην κλάση
+            // Το phoneShop δημιουργεί τα specs και τα περνάει στην κλάση
             // PhoneOrderHandler για τα δημιουργήσει
             PhoneOrderHandler.addPhone(phoneShop.createPhoneSpec());
         }

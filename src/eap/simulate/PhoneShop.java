@@ -31,14 +31,12 @@ public class PhoneShop {
         // Υπολογίζουμε τυχαία specs, μέσα στα ζητούμενα όρια
         int batterySize = random.nextInt(4000) + 1000;
         Dimension screenSize = new Dimension(random.nextInt(2500) + 500, random.nextInt(2500) + 500);
-        String phoneNumber = "+306957344455";
+        String phoneNumber = "+306957344455"; // TODO random phone number
         String manufacturer = manufacturers[random.nextInt(4)];
         int storage = random.nextInt(198) + 2;
           
-        int phoneKind = random.nextInt(2);
-        
-        // Αν το phoneKind είναι 0, δημιουργούμε specs για feature phone
-        if (phoneKind == 0) {
+        // Αν η τυχαία boolean είναι true, δημιουργούμε specs για feature phone
+        if (random.nextBoolean()) {
             phone = new FeaturePhone(batterySize, screenSize, phoneNumber, manufacturer, storage);
         } else { // Αλλιώς δημιουργούμε specs για smart phone
             String operatingSystem = operatingSystems[random.nextInt(3)];
