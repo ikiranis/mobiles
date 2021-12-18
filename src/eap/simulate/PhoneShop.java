@@ -28,22 +28,26 @@ public class PhoneShop {
     public Phone createPhoneSpec(){
         Phone phone;
         
-        int phoneKind = random.nextInt(2);
+        // Υπολογίζουμε τυχαία specs, μέσα στα ζητούμενα όρια
         int batterySize = random.nextInt(4000) + 1000;
         Dimension screenSize = new Dimension(random.nextInt(2500) + 500, random.nextInt(2500) + 500);
         String phoneNumber = "+306957344455";
         String manufacturer = manufacturers[random.nextInt(4)];
         int storage = random.nextInt(198) + 2;
-                
+          
+        int phoneKind = random.nextInt(2);
+        
+        // Αν το phoneKind είναι 0, δημιουργούμε specs για feature phone
         if (phoneKind == 0) {
             phone = new FeaturePhone(batterySize, screenSize, phoneNumber, manufacturer, storage);
-        } else {
+        } else { // Αλλιώς δημιουργούμε specs για smart phone
             String operatingSystem = operatingSystems[random.nextInt(3)];
             Camera camera = new Camera(random.nextInt(90) + 10);
             
             phone = new SmartPhone(batterySize, screenSize, phoneNumber, manufacturer, storage, camera, operatingSystem);
         }
         
+        // Προσθέτει τα specs στην λίστα phoneList
         phoneList.add(phone);
         
         return phone;

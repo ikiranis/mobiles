@@ -40,9 +40,10 @@ public class Simulation {
         PhoneShop shop = new PhoneShop();
                 
         for(int i=0; i<numberOfPhones; i++) {
-            phone = shop.createPhoneSpec();
-            System.out.println(phone);
+            PhoneOrderHandler.addPhone(shop.createPhoneSpec());
         }
+        
+        PhoneOrderHandler.buildPhones();
         
     }
 
