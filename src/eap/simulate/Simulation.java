@@ -38,10 +38,12 @@ public class Simulation {
         
         // Δημιουργία των πελατών
         for (int i=0; i<numberOfClients; i++) {
-            // Θέτουμε τυχαία αν το interestFor είναι κλάσης FeaturePhone ή SmartPhone
-            Class interestFor = random.nextBoolean() ? FeaturePhone.class : SmartPhone.class;
+            // Θέτουμε τυχαία αν το interestedFor είναι κλάσης FeaturePhone ή SmartPhone
+            Class interestedFor = random.nextBoolean() ? FeaturePhone.class : SmartPhone.class;
             
-            Client client = new Client(names[random.nextInt(10)], interestFor);
+            // Δημιουργούμε τον πελάτη και τον προσθέτουμε στην λίστα των listeners,
+            // για να ενημερωθεί όταν παραχθεί τον κινητό που τον ενδιαφέρει
+            PhoneOrderHandler.addListener(new Client(names[random.nextInt(10)], interestedFor));
         }
         
         // Δημιουργία των τηλεφώνων

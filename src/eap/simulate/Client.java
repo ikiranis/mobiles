@@ -1,5 +1,6 @@
 package eap.simulate;
 
+import eap.abstractfactory.Camera;
 import eap.abstractfactory.FeaturePhone;
 import eap.abstractfactory.Phone;
 import eap.abstractfactory.SmartPhone;
@@ -45,6 +46,27 @@ public class Client implements PhoneCreationListener {
 
     @Override
     public void update(Phone phone) {
+        
+        // Αν το phone είναι αυτό που ζητάει ο πελάτης
+        if (phone.getClass() == interestedFor && PhoneOrderHandler.phoneExistsInList(phone)) {
+            // Ο πελάτης παίρνει το phone
+            setPhone(phone);
+            // Αφαιρούμε το τηλέφωνο από την λίστα των διαθέσιμων
+            PhoneOrderHandler.removePhone(phone);
+            // Αφαιρούμε τον πελάτη από την λίστα των listeners
+            PhoneOrderHandler.removeListener(this);
+            
+            // Εκτυπώσεις για το ότι ο πελάτης πήρε το συγκεκριμένο τηλέφωνο
+            System.out.printf("\nHi, I am %s (%s) and I got my new phone!\n", name, interestedFor.getSimpleName());
+            System.out.println(phone);
+            System.out.printf("Phone number valid: %b\n", checkNumberValidity(phone.getPhoneNumber()));
+            System.out.printf("Phone number carrier: %s\n", getCarrierName(phone.getPhoneNumber()));
+            
+            // Χρήστη του τηλεφώνου
+            usePhone(phone);
+        }
+        
+        
         // Αφαιρεί το τηλέφωνο από το σύνολο των διαθέσιμων τηλεφώνων
         // Απεγράφεται από την λίστα των ενδιαφερόμενων πελατών
         // Αφαιρείται από το σύνολο των πελατών που αναμένουν για κινητό
@@ -59,8 +81,14 @@ public class Client implements PhoneCreationListener {
     Στην περίπτωση FeaturePhone θα καλεί τον αριθμό +30123456789
     Στην περίπτωση SmartPhone Θα βγάζει μια φωτογραφία με φλας και ανάλυση 12 MP*/
     private void usePhone(Phone phone){
-        // phone.callNumber
-        // phone.camera.takePicture
+        if(phone instanceof FeaturePhone) {
+            phone.callNumber("3442543534");            
+        } else {
+            Camera camera = new Camera(12);
+            camera.setSelectedResolution(12);
+            camera.setUseFlash(true);
+            camera.takePicture();
+        }
     }
     
     //Σύμφωνα με την περιγραφή πάνω από τον πίνακα carriers, η μέθοδος επιστρέφει είτε το όνομα του carrier, είτε Διαφημιστικά
