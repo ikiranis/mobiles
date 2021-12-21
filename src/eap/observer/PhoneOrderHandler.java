@@ -54,16 +54,16 @@ public class PhoneOrderHandler {
         
         try {
             // Δημιουργία αρχείου
-            FileWriter writer = new FileWriter("output.txt");
+            FileWriter file = new FileWriter("output.txt");
             
             // Εγγραφή του κάθε τηλεφώνου στο αρχείο
             for (Phone phone : phones) {
-                writer.write(String.format("%d.\n%s\n", counter, phone));
+                file.write(String.format("%d.\n%s\n", counter, phone));
                 counter++;
             }
             
             // Κλείσιμο αρχείου
-            writer.close();            
+            file.close();            
         } catch (IOException e) {
             // Exception σε περίπτωση κάποιου σφάλματος στον χειρισμό του αρχείου
             System.out.println("Problem with file");
