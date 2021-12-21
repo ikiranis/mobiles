@@ -105,7 +105,6 @@ public class Client implements PhoneCreationListener {
         
         // Για Διαφημιστικά, αν δεν βρει τίποτα από τα παραπάνω
         return "Διαφημιστικά";
-
     }
     
     /*Για να είναι έγκυρο ένα κινητό τηλέφωνο πρέπει να ισχύουν ταυτόχρονα τα εξής:
@@ -126,6 +125,5 @@ public class Client implements PhoneCreationListener {
         
         // Έλεγχος αν συμφωνεί τo string με το pattern κι επιστρέφει true ή false
         return matcher.find();
-      
     }
 }

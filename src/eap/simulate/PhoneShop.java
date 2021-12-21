@@ -31,7 +31,7 @@ public class PhoneShop {
         // Υπολογίζουμε τυχαία specs, μέσα στα ζητούμενα όρια
         int batterySize = random.nextInt(4000) + 1000;
         Dimension screenSize = new Dimension(random.nextInt(2500) + 500, random.nextInt(2500) + 500);
-        String phoneNumber = "+306957344455"; // TODO random phone number
+        String phoneNumber = String.format("+3069%d",random.nextInt(99999999) + 10000000);
         String manufacturer = manufacturers[random.nextInt(4)];
         int storage = random.nextInt(198) + 2;
           
