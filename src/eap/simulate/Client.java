@@ -47,7 +47,7 @@ public class Client implements PhoneCreationListener {
     @Override
     public void update(Phone phone) {
         
-        // Αν το phone είναι αυτό που ζητάει ο πελάτης
+        // Αν το phone είναι αυτό που ζητάει ο πελάτης και το τηλέφωνο συνεχίζει να υπάρχει στην λίστα
         if (phone.getClass() == interestedFor && PhoneOrderHandler.phoneExistsInList(phone)) {
             // Ο πελάτης παίρνει το phone
             setPhone(phone);

@@ -58,6 +58,9 @@ public class Simulation {
         // Καλούμε την μέθοδο buildPhones για να δημιουργήσει όλα τα phones
         PhoneOrderHandler.buildPhones();
         
+        // Report για τους χρήστες που δεν πήραν τηλέφωνο
+        PhoneOrderHandler.printClientsWithoutPhone();
+        
     }
 
 }

@@ -67,4 +67,11 @@ public class PhoneOrderHandler {
             listener.update(phone);
         }
     }
+    
+    // Εκτυπώνει, πόσοι πελάτες δεν έχουν πάρει τηλέφωνο
+    public static void printClientsWithoutPhone() {
+        System.out.println("\n######-----Report-----######");
+        System.out.printf("%d clients did not get a phone...\n", phoneCreationListeners.size());
+        System.out.println("######----------------######");
+    }
 }
