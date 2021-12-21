@@ -1,0 +1,14 @@
+1.
+Battery(mAh): 3389
+Screen: java.awt.Dimension[width=688,height=1213]
+Number: +306970556587
+Manufacturer: Apple
+Storage(GB): 151
+Camera: 38 MP
+Operating System: iOS
+2.
+Battery(mAh): 1161
+Screen: java.awt.Dimension[width=1689,height=1262]
+Number: +306938174395
+Manufacturer: Motorola
+Storage(GB): 130

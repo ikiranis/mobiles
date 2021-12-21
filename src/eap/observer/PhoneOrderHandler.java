@@ -50,7 +50,26 @@ public class PhoneOrderHandler {
     //Η μέθοδος αυτή θα εκτυπώνει τα βασικά χαρακτηριστικά, μόνο από την κλάση Phone του κινητού τηλεφώνου
     //όσων κινητών παράχθηκαν
     private static void printCreatedPhoneSpecsToTextFile(List<Phone> phones){
-
+        int counter = 1;
+        
+        try {
+            // Δημιουργία αρχείου
+            FileWriter writer = new FileWriter("output.txt");
+            
+            // Εγγραφή του κάθε τηλεφώνου στο αρχείο
+            for (Phone phone : phones) {
+                writer.write(String.format("%d.\n%s\n", counter, phone));
+                counter++;
+            }
+            
+            // Κλείσιμο αρχείου
+            writer.close();            
+        } catch (IOException e) {
+            // Exception σε περίπτωση κάποιου σφάλματος στον χειρισμό του αρχείου
+            System.out.println("Problem with file");
+            e.printStackTrace();
+        }
+        
     }
     
     public static void addListener(PhoneCreationListener phoneCreationListener){
