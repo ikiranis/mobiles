@@ -62,19 +62,9 @@ public class Client implements PhoneCreationListener {
             System.out.printf("Phone number valid: %b\n", checkNumberValidity(phone.getPhoneNumber()));
             System.out.printf("Phone number carrier: %s\n", getCarrierName(phone.getPhoneNumber()));
             
-            // Χρήστη του τηλεφώνου
+            // Χρήση του τηλεφώνου
             usePhone(phone);
         }
-        
-        
-        // Αφαιρεί το τηλέφωνο από το σύνολο των διαθέσιμων τηλεφώνων
-        // Απεγράφεται από την λίστα των ενδιαφερόμενων πελατών
-        // Αφαιρείται από το σύνολο των πελατών που αναμένουν για κινητό
-        // Print "Hi, I am Eleni (featurePhone) and I got my new phone!"
-        // Print phone specs
-        // checkNumberValidity
-        // getCarrierName
-        // usePhone
     }
     
     /*Η μέθοδος χρήσης του κινητού τηλεφώνου θα κάνει τα εξής:
@@ -82,9 +72,11 @@ public class Client implements PhoneCreationListener {
     Στην περίπτωση SmartPhone Θα βγάζει μια φωτογραφία με φλας και ανάλυση 12 MP*/
     private void usePhone(Phone phone){
         if(phone instanceof FeaturePhone) {
-            phone.callNumber("3442543534");            
+            phone.callNumber("+30123456789");            
         } else {
-            Camera camera = new Camera(12);
+            // Παίρνουμε το αντικείμενο της κάμερας και θέτουμε Resolution και
+            // χρήση του flash, πριν βγάλουμε φωτογραφία
+            Camera camera = ((SmartPhone)phone).getCamera();
             camera.setSelectedResolution(12);
             camera.setUseFlash(true);
             camera.takePicture();
