@@ -2,11 +2,9 @@ package eap.simulate;
 
 import eap.observer.PhoneOrderHandler;
 import eap.abstractfactory.FeaturePhone;
-import eap.abstractfactory.Phone;
 import eap.abstractfactory.SmartPhone;
 
 import java.util.*;
-import java.util.List;
 
 public class Simulation {
     //Fixed array of Greek names

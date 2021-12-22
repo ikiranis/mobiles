@@ -6,10 +6,7 @@ import eap.abstractfactory.Phone;
 import eap.abstractfactory.SmartPhone;
 import eap.observer.PhoneCreationListener;
 import eap.observer.PhoneOrderHandler;
-import eap.simulate.Simulation;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -47,9 +44,9 @@ public class Client implements PhoneCreationListener {
     @Override
     public void update(Phone phone) {
         
-        // Αν το phone είναι αυτό που ζητάει ο πελάτης και το τηλέφωνο συνεχίζει να υπάρχει στην λίστα
+        // Αν το τηλέφωνο είναι αυτό που ζητάει ο πελάτης και αυτό συνεχίζει να υπάρχει στην λίστα
         if (phone.getClass() == interestedFor && PhoneOrderHandler.phoneExistsInList(phone)) {
-            // Ο πελάτης παίρνει το phone
+            // Ο πελάτης παίρνει το τηλέφωνο
             setPhone(phone);
             // Αφαιρούμε το τηλέφωνο από την λίστα των διαθέσιμων
             PhoneOrderHandler.removePhone(phone);
@@ -83,7 +80,7 @@ public class Client implements PhoneCreationListener {
         }
     }
     
-    //Σύμφωνα με την περιγραφή πάνω από τον πίνακα carriers, η μέθοδος επιστρέφει είτε το όνομα του carrier, είτε Διαφημιστικά
+    // Σύμφωνα με την περιγραφή πάνω από τον πίνακα carriers, η μέθοδος επιστρέφει είτε το όνομα του carrier, είτε Διαφημιστικά
     public String getCarrierName(String phoneNumber){
         // Χρήση της μεθόδου matches για έλεγχο αν περιέχεται συγκεκριμένο string-αριθμός
         // και ανάλογα επιστρέφει τον carrier
@@ -107,7 +104,7 @@ public class Client implements PhoneCreationListener {
         return "Διαφημιστικά";
     }
     
-    /*Για να είναι έγκυρο ένα κινητό τηλέφωνο πρέπει να ισχύουν ταυτόχρονα τα εξής:
+    /* Για να είναι έγκυρο ένα κινητό τηλέφωνο πρέπει να ισχύουν ταυτόχρονα τα εξής:
     1. Να ξεκινάει από +3069 (είναι όλα από Ελλάδα και είναι όλα κινητά)
     2. Στη συνέχεια να υπάρχουν ακριβώς 10 αριθμοί
     3. Παραδοχή ότι δεν υπάρχουν κενά (white spaces μεταξύ των αριθμών)*/
