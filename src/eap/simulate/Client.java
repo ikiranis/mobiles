@@ -6,6 +6,8 @@ import eap.abstractfactory.Phone;
 import eap.abstractfactory.SmartPhone;
 import eap.observer.PhoneCreationListener;
 import eap.observer.PhoneOrderHandler;
+import java.util.HashMap;
+import java.util.Map;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -18,7 +20,7 @@ public class Client implements PhoneCreationListener {
     1. Είναι οι 3 που υπάρχουν στην ακόλουθη λίστα
     2. Η Cosmote έχει κινητά που ξεκινάνε 697, 698 και 699, η Vodafone 694, 695 και 696 και η Wind 691,692 και 693.
     3. Κινητά που ξεκινάνε ως 690 θα αναφέρονται ως "Διαφημιστικά".*/
-    private static final String[] carriers = {"Cosmote","Vodafone","Wind"};
+    private static final String[] carriers = {"Wind", "Vodafone", "Cosmote"};
 
     public Phone getPhone() {
         return phone;
@@ -45,7 +47,7 @@ public class Client implements PhoneCreationListener {
     public void update(Phone phone) {
         
         // Αν το τηλέφωνο είναι αυτό που ζητάει ο πελάτης και αυτό συνεχίζει να υπάρχει στην λίστα
-        if (phone.getClass() == interestedFor && PhoneOrderHandler.phoneExistsInList(phone)) {
+        if (phone.getClass().equals(interestedFor) && PhoneOrderHandler.phoneExistsInList(phone)) {
             // Ο πελάτης παίρνει το τηλέφωνο
             setPhone(phone);
             // Αφαιρούμε το τηλέφωνο από την λίστα των διαθέσιμων
@@ -82,26 +84,23 @@ public class Client implements PhoneCreationListener {
     
     // Σύμφωνα με την περιγραφή πάνω από τον πίνακα carriers, η μέθοδος επιστρέφει είτε το όνομα του carrier, είτε Διαφημιστικά
     public String getCarrierName(String phoneNumber){
-        // Χρήση της μεθόδου matches για έλεγχο αν περιέχεται συγκεκριμένο string-αριθμός
-        // και ανάλογα επιστρέφει τον carrier
+        // Αρχικοποίηση αντικειμένου HashMap, της κλάσης Map
+        Map<String, String> carriersMap = new HashMap<>();
         
-        // Για Cosmote
-        if (phoneNumber.matches("^\\+30697.*|^\\+30698.*|^\\+30699.*")) {
-            return carriers[0];
-        }
-       
-        // Για Vodafone
-        if (phoneNumber.matches("^\\+30694.*|^\\+30695.*|^\\+30696.*")) {
-            return carriers[1];
-        }
+        // Προσθήκη στοιχείου στο HashMap με κλειδί "+30690" και τιμή "Διαφημιστικά"
+        carriersMap.put("+30690", "Διαφημιστικά");
         
-        // Για Wind
-        if (phoneNumber.matches("^\\+30691.*|^\\+30692.*|^\\+30693.*")) {
-            return carriers[2];
+        // Προσθήκη στοιχείων με κλειδί "+3069?" και αντίστοιχη τιμή το όνομα 
+        // του carrier
+        for(int i=0; i<=2; i++) {
+            for (int j=1; j<=3; j++) {
+                carriersMap.put(String.format("+3069%d", i*3 + j), carriers[i]);
+            }
         }
         
-        // Για Διαφημιστικά, αν δεν βρει τίποτα από τα παραπάνω
-        return "Διαφημιστικά";
+        // Επιστρέφει την τιμή που έχει κλειδί τους 6 πρώτους χαρακτήρες του τηλεφώνου
+        // Δηλαδή τον αντίστοιχο carrier
+        return carriersMap.get(phoneNumber.substring(0, 6));
     }
     
     /* Για να είναι έγκυρο ένα κινητό τηλέφωνο πρέπει να ισχύουν ταυτόχρονα τα εξής:
@@ -114,13 +113,13 @@ public class Client implements PhoneCreationListener {
         // Δημιουργούμε ένα pattern instance, χρησιμοποιώντας την μέθοδο compile
         // Ψάχνουμε για το pattern, o αριθμός να αρχίζει με +3069 και να ακολουθούν
         // 8 αριθμητικά ψηφία
-        Pattern pattern = Pattern.compile("^\\+3069\\d{8}$");
+        Pattern pattern = Pattern.compile("\\+3069\\d{8}");
         
         // Δημιουργούμε ένα matcher instance, για να ελέγξουμε με την μέθοδο 
         // matcher, το string phoneNumber, αν συμφωνεί με το pattern που έχουμε ορίσει
         Matcher matcher = pattern.matcher(phoneNumber);
         
         // Έλεγχος αν συμφωνεί τo string με το pattern κι επιστρέφει true ή false
-        return matcher.find();
+        return matcher.matches();
     }
 }
