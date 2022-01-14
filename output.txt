@@ -1,14 +1,22 @@
 1.
-Battery(mAh): 3389
-Screen: java.awt.Dimension[width=688,height=1213]
-Number: +306970556587
-Manufacturer: Apple
-Storage(GB): 151
-Camera: 38 MP
-Operating System: iOS
-2.
-Battery(mAh): 1161
-Screen: java.awt.Dimension[width=1689,height=1262]
-Number: +306938174395
+Battery(mAh): 3863
+Screen: java.awt.Dimension[width=1560,height=2501]
+Number: +306936909632
 Manufacturer: Motorola
-Storage(GB): 130
+Storage(GB): 174
+2.
+Battery(mAh): 4008
+Screen: java.awt.Dimension[width=1174,height=2670]
+Number: +306923260493
+Manufacturer: Motorola
+Storage(GB): 100
+Camera: 61 MP
+Operating System: Tizen
+3.
+Battery(mAh): 2990
+Screen: java.awt.Dimension[width=2846,height=998]
+Number: +306984810439
+Manufacturer: Samsung
+Storage(GB): 46
+Camera: 66 MP
+Operating System: Tizen

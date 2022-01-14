@@ -86,17 +86,17 @@ public class Client implements PhoneCreationListener {
         // και ανάλογα επιστρέφει τον carrier
         
         // Για Cosmote
-        if (phoneNumber.matches(".*30697.*|.*30698.*|.*30699.*")) {
+        if (phoneNumber.matches("^\\+30697.*|^\\+30698.*|^\\+30699.*")) {
             return carriers[0];
         }
        
         // Για Vodafone
-        if (phoneNumber.matches(".*30694.*|.*30695.*|.*30696.*")) {
+        if (phoneNumber.matches("^\\+30694.*|^\\+30695.*|^\\+30696.*")) {
             return carriers[1];
         }
         
         // Για Wind
-        if (phoneNumber.matches(".*30691.*|.*30692.*|.*30693.*")) {
+        if (phoneNumber.matches("^\\+30691.*|^\\+30692.*|^\\+30693.*")) {
             return carriers[2];
         }
         

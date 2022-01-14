@@ -21,7 +21,7 @@ public class Simulation {
         Random random = new Random();
         int numberOfPhones;
         int numberOfClients;
-                
+               
         // Εισαγωγή δεδομένων από τον χρήστη
         System.out.print("Please enter number of phones to be ordered: ");
         numberOfPhones = input.nextInt();
