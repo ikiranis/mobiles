@@ -21,6 +21,8 @@ public class Client implements PhoneCreationListener {
     2. Η Cosmote έχει κινητά που ξεκινάνε 697, 698 και 699, η Vodafone 694, 695 και 696 και η Wind 691,692 και 693.
     3. Κινητά που ξεκινάνε ως 690 θα αναφέρονται ως "Διαφημιστικά".*/
     private static final String[] carriers = {"Wind", "Vodafone", "Cosmote"};
+    // Αρχικοποίηση αντικειμένου HashMap, της κλάσης Map
+    private static final Map<String, String> carriersMap = new HashMap<>();
 
     public Phone getPhone() {
         return phone;
@@ -84,17 +86,19 @@ public class Client implements PhoneCreationListener {
     
     // Σύμφωνα με την περιγραφή πάνω από τον πίνακα carriers, η μέθοδος επιστρέφει είτε το όνομα του carrier, είτε Διαφημιστικά
     public String getCarrierName(String phoneNumber){
-        // Αρχικοποίηση αντικειμένου HashMap, της κλάσης Map
-        Map<String, String> carriersMap = new HashMap<>();
+        // Αν η carriersMap είναι άδεια (την πρώτη φορά δηλαδή που τρέχει η μέθοδος,
+        // γεμίζουμε με τα κατάλληλα στοιχεία
+        if (carriersMap.isEmpty()) {
         
-        // Προσθήκη στοιχείου στο HashMap με κλειδί "+30690" και τιμή "Διαφημιστικά"
-        carriersMap.put("+30690", "Διαφημιστικά");
-        
-        // Προσθήκη στοιχείων με κλειδί "+3069?" και αντίστοιχη τιμή το όνομα 
-        // του carrier
-        for(int i=0; i<=2; i++) {
-            for (int j=1; j<=3; j++) {
-                carriersMap.put(String.format("+3069%d", i*3 + j), carriers[i]);
+            // Προσθήκη στοιχείου στο HashMap με κλειδί "+30690" και τιμή "Διαφημιστικά"
+            carriersMap.put("+30690", "Διαφημιστικά");
+
+            // Προσθήκη στοιχείων με κλειδί "+3069?" και αντίστοιχη τιμή το όνομα 
+            // του carrier
+            for(int i=0; i<=2; i++) {
+                for (int j=1; j<=3; j++) {
+                    carriersMap.put(String.format("+3069%d", i*3 + j), carriers[i]);
+                }
             }
         }
         

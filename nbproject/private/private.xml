@@ -5,18 +5,14 @@
         <group>
             <file>file:/home/rocean/dev/netbeans/plh24_ge2/src/eap/simulate/PhoneShop.java</file>
             <file>file:/home/rocean/dev/netbeans/plh24_ge2/src/eap/abstractfactory/Phone.java</file>
-            <file>file:/home/rocean/dev/netbeans/plh24_ge2/src/eap/abstractfactory/FeaturePhoneFactory.java</file>
+            <file>file:/home/rocean/dev/netbeans/plh24_ge2/src/eap/abstractfactory/SmartPhoneFactory.java</file>
             <file>file:/home/rocean/dev/netbeans/plh24_ge2/src/eap/abstractfactory/Camera.java</file>
             <file>file:/home/rocean/dev/netbeans/plh24_ge2/src/eap/abstractfactory/SmartPhone.java</file>
+            <file>file:/home/rocean/dev/netbeans/plh24_ge2/src/eap/abstractfactory/PhoneFactory.java</file>
             <file>file:/home/rocean/dev/netbeans/plh24_ge2/src/eap/observer/PhoneCreationListener.java</file>
             <file>file:/home/rocean/dev/netbeans/plh24_ge2/src/eap/observer/PhoneOrderHandler.java</file>
-            <file>file:/home/rocean/dev/netbeans/plh24_ge2/output.txt</file>
-            <file>file:/home/rocean/dev/netbeans/plh24_ge2/src/eap/abstractfactory/SmartPhoneFactory.java</file>
-            <file>file:/home/rocean/dev/netbeans/plh24_ge2/src/eap/abstractfactory/PhoneFactory.java</file>
-            <file>file:/home/rocean/dev/netbeans/plh24_ge2/src/eap/abstractfactory/PhoneAbstractFactory.java</file>
-            <file>file:/home/rocean/dev/netbeans/plh24_ge2/src/eap/abstractfactory/FeaturePhone.java</file>
-            <file>file:/home/rocean/dev/netbeans/plh24_ge2/src/eap/simulate/Simulation.java</file>
             <file>file:/home/rocean/dev/netbeans/plh24_ge2/src/eap/simulate/Client.java</file>
+            <file>file:/home/rocean/dev/netbeans/plh24_ge2/src/eap/simulate/Simulation.java</file>
         </group>
     </open-files>
 </project-private>
