@@ -47,7 +47,6 @@ public class Client implements PhoneCreationListener {
 
     @Override
     public void update(Phone phone) {
-        
         // Αν το τηλέφωνο είναι αυτό που ζητάει ο πελάτης και αυτό συνεχίζει να υπάρχει στην λίστα
         if (phone.getClass().equals(interestedFor) && PhoneOrderHandler.phoneExistsInList(phone)) {
             // Ο πελάτης παίρνει το τηλέφωνο
@@ -56,6 +55,8 @@ public class Client implements PhoneCreationListener {
             PhoneOrderHandler.removePhone(phone);
             // Αφαιρούμε τον πελάτη από την λίστα των listeners
             PhoneOrderHandler.removeListener(this);
+            // Αφαιρούμε τον πελάτη από την λίστα των πελατών
+            Simulation.clients.remove(this);
             
             // Εκτυπώσεις για το ότι ο πελάτης πήρε το συγκεκριμένο τηλέφωνο
             System.out.printf("\nHi, I am %s (%s) and I got my new phone!\n", name, interestedFor.getSimpleName());
@@ -86,7 +87,7 @@ public class Client implements PhoneCreationListener {
     
     // Σύμφωνα με την περιγραφή πάνω από τον πίνακα carriers, η μέθοδος επιστρέφει είτε το όνομα του carrier, είτε Διαφημιστικά
     public String getCarrierName(String phoneNumber){
-        // Αν η carriersMap είναι άδεια (την πρώτη φορά δηλαδή που τρέχει η μέθοδος,
+        // Αν η carriersMap είναι άδεια (την πρώτη φορά δηλαδή που τρέχει η μέθοδος),
         // γεμίζουμε με τα κατάλληλα στοιχεία
         if (carriersMap.isEmpty()) {
         
